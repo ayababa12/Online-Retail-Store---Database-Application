@@ -3,13 +3,14 @@
 The 433 Store is an online shopping website developed using Flask and PostgreSQL. It offers a variety of clothing and cosmetic items. Users can browse different categories, view products, add items to their cart, and complete the checkout process.
 
 ## Table of Contents
-
+- [A Database Design for FOUR3THREE](#A Database Design for FOUR3THREE)
 - [Usage](#usage)
 - [Signup/Login](#Signup/Login)
 - [HomePage](#HomePage)
 - [cart](#cart)
 - [profile](#profile)
-
+## A Database Design for FOUR3THREE
+This document contains a detailed description of the design process, including the ER diagram, mapping, normalization, and SQL DDL code
 ## Usage
 
 1. First open the main.py file and make sure to replace the password on line 9 with your own password for PostgreSQL
@@ -48,3 +49,4 @@ The 433 Store is an online shopping website developed using Flask and PostgreSQL
 2. After you have logged in the profile icon is now shown on the top right of your screen left to the cart button.
 3. To view your profile you can now click on that icon and now all your information as well as past orders are shown.
 4. To navigate back to the main page, click on the FOUR3THREE icon which is found on the top of the page.
+
