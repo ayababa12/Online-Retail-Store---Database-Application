@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="static/cart.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function removefromCart(product_name) {
+        $.ajax({
+          type: "GET",
+          url: "/cart/removefromcart/" + product_name,
+          success: function (response) {
+            window.location.reload();
+            // Optionally, update the cart display or take further actions
+          },
+          error: function (error) {
+            // Handle error scenarios
+          },
+        });
+      }
+
+      function checkout() {
+        $.ajax({
+          type: "GET",
+          url: "/cart/checkout",
+          success: function (response) {
+            window.location.reload();
+            // Optionally, update the cart display or take further actions
+          },
+          error: function (error) {
+            // Handle error scenarios
+          },
+        });
+      }
+    </script>
+    <header>
+      <a href="/"><img src="static/logo.png" width="450" height="68" /></a>
+      {% if session.get('user_logged_in') %}
+      <a href="/profile"><button class="profileButton">&#128100;</button></a>
+      {% else %}
+      <a href="/login"><button class="profileButton">Login</button></a>
+      {% endif %}
+      <a href="/cart"><button class="cartButton">&#128722;</button></a>
+
+     
+      {% if not search%} {% endif %}
+    </header>
+  </head>
+  <body>
+    <h1>Cart</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      {% for item in cart %}
+      <tr>
+        <td>{{ item[0]}}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>
+          <button id="removebutton" onclick="removefromCart('{{ item[1] }}')">
+            Remove From Cart
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <p>Total: ${{ total }}</p>
+    {% if session.get('user_logged_in') %}
+    <button id="checkout" onclick="checkout()">Checkout</button>
+    {% else %}
+    <a href="/login"><button id="checkout">Checkout</button></a>
+    {% endif %}
+  </body>
+</html>
+

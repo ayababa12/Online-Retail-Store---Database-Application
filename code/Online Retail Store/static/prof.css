@@ -1,0 +1,37 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 20px; /* Added margin for better spacing */
+    background-color: white; /* Light gray background color */
+    color: #333; /* Text color (initially set to black) */
+}
+
+.user-profile, .clothing-orders {
+    background-color: #ffcccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: red; /* Blue text color for the h1 and h2 elements */
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+strong {
+    color: #ffcccc; /* Blue text color for strong elements */
+}
+
+.order {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+em {
+    color: #555; /* Dark gray text color for em elements */
+}

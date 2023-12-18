@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product[1] }} Details</title>
+    <link rel="stylesheet" href="static/mainstyle1.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function addToCart(product_name) {
+        $.ajax({
+          type: "GET",
+          url: "/cart/addtocart/" + product_name,
+          success: function (response) {
+            window.location.reload();
+            // Optionally, update the cart display or take further actions
+          },
+          error: function (error) {
+            // Handle error scenarios
+          },
+        });
+      }
+    </script>
+</head>
+
+
+<header>
+    
+    <a href="/"><img src="static/logo.png" width=450 height="68"></a>
+    {% if session.get('user_logged_in') %}
+            <a href="/profile"><button class="profileButton">&#128100;</button></a>
+        {% else %}
+            <a href="/login"><button class="profileButton">Login</button></a>
+        {% endif %} 
+    <a href="/cart"><button class="cartButton">&#128722;</button></a>
+<form action="" method="POST">
+            
+            <input type="text" name="search_bar" placeholder="Search" ><br>
+              
+        
+            <input type="submit" value="🔍︎">
+      </form> 
+<div class="topnav">
+        <a href="/coat">Coats</a>
+        <a href="/jackets">Jackets</a>
+        <a href="/blazers">Blazers</a>
+	<a href="/dresses-jumpsuits">Dresses/Jumpsuits</a>
+	<a href="/tops-bodysuits">Tops/Bodysuits</a>
+	<a href="/shirts">Shirts</a>
+	<a href="/t-shirts">T-shirts</a>
+	<a href="/sweatshirts">Sweatshirts</a>
+	<a href="/trousers">Trousers</a>
+	<a href="/skirts-shorts">Skirts/Shorts</a>
+	<a href="/shoes">Shoes</a>
+	<a href="/accessories">Accesories</a>
+	<a href="/suits">Suits</a>
+	<a href="/cosmetics">Cosmetics</a>
+      </div>
+<body>
+{% if not category_view and not search%}
+    {% for row in pics%}
+        <img class="product_detail_image" src={{row[1]}} width="200" height="300">
+    {% endfor %}
+    <h1 class="item_name">{{ product[0] }} <button class="add_to_cart" onclick="addToCart('{{ product[0] }}')">Add to cart</button></h1>
+    <p class="sale-red-box-details">{% if product[4]!=0 %}{{product[4]}}% off{% endif %}</p>
+    <p class="item_specs">Price: ${{ product[1] }}  {% if product[4]!=0 %}<s class="sale-crossed">{{product[5]}}</s>{% endif %}</p>
+    {% if size%}
+    
+    <ul class="size-list">
+    <span class="available_sizes">Available Sizes: </span>
+    {%for row in size%}
+    <li>{{row[0]}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <p class="item_specs">{{ product[2] }}</p>
+	  
+    {% if search and not search_results_cloth and not search_results_cos %}
+        <p>No results found</p>
+    {% endif %}
+{% endif %}
+    <!-- Search Results for Clothing -->
+    <ul class="product-container">
+        {% for row in search_results_cloth %}
+          
+                <a href="{{ url_for('products', category=row[0]) }}">
+                    <img class="productpic" src={{row[3]}} width="200" height="300">
+                    <p></p>
+                    <p class="sale-red-box">{% if row[2]!=0 %}{{row[2]}}% off{% endif %}</p>
+                    <p>{{row[0]}}</p>
+                    <p>${{row[1]}} {% if row[2]!=0 %}<s class="sale-crossed">{{row[4]}}</s>{% endif %}</p>
+                </a>
+          
+        {% endfor %}
+    </ul>
+
+    <!-- Search Results for Cosmetics -->
+    <ul class="product-container">
+        {% for row in search_results_cos %}
+        
+                <a href="{{ url_for('products', category=row[0]) }}">
+                    <img class="productpic" src={{row[3]}} width="200" height="300">
+                    <p></p>
+                    <p class="sale-red-box">{% if row[2]!=0 %}{{row[2]}}% off{% endif %}</p>
+                    <p>{{row[0]}}</p>
+                    <p>${{row[1]}} {% if row[2]!=0 %}<s class="sale-crossed">{{row[4]}}</s>{% endif %}</p>
+                </a>
+            
+        {% endfor %}
+    </ul>
+
+    {% if not search and category_view%}
+
+        <h1>{{ category }}</h1>
+	
+        <!-- Clothing Results -->
+        <ul class="product-container">
+            {% for row in results_cloth %}
+            
+                    <a href="{{ url_for('products', category=row[0]) }}">
+                        <img class="productpic" src={{row[3]}} width="200" height="300">
+                        <p></p>
+                        <p class="sale-red-box">{% if row[2]!=0 %}{{row[2]}}% off{% endif %}</p>
+                        <p>{{row[0]}}</p>
+                        <p>${{row[1]}} {% if row[2]!=0 %}<s class="sale-crossed">{{row[4]}}</s>{% endif %}</p>
+                    </a>
+           
+            {% endfor %}
+
+            <!-- Cosmetics Results -->
+            {% for row in results_cos %}
+         
+                    <a href="{{ url_for('products', category=row[0]) }}">
+                        <img class="productpic" src={{row[3]}} width="200" height="300">
+                        <p></p>
+                        <p class="sale-red-box">{% if row[2]!=0 %}{{row[2]}}% off{% endif %}</p>
+                        <p>{{row[0]}}</p>
+                        <p>${{row[1]}} {% if row[2]!=0 %}<s class="sale-crossed">{{row[4]}}</s>{% endif %}</p>
+                    </a>
+          
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    <footer>
+        <p>Phone: +961 1 740 942</p>
+        <p>Address: Bliss Street, Beirut, Lebanon</p>
+    </footer>
+</body>
+</html>
+    
+</body>
+</html>

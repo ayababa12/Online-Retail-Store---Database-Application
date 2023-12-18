@@ -1,0 +1,56 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px; 
+    background-color: #f0f0f0; 
+    color: #333; /* Text color (initially set to black) */
+}
+
+h1, h2 {
+    color: #007BFF; /* Blue text color for the h1 and h2 elements */
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #333; /* Text color for labels */
+}
+
+input, select, textarea {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #007BFF; /* Blue button color */
+    color: #fff; /* Text color for the button */
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+
+ul.flashes {
+    list-style: none;
+    padding: 0;
+}
+
+ul.flashes li {
+    color: #d9534f; /* Red text color for flashed messages */
+    margin-bottom: 10px;
+}
+

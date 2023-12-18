@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FOUR3THREE{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="static/prof.css">
+</head>
+<header>
+    <a href="/"><img src="static/logo.png" width=450 height="68"></a>
+<body>
+    <h1>User Profile</h1>
+    <p>Email: {{ user_info['email'] }}</p>
+    <p>First Name: {{ user_info['first_name'] }}</p>
+    <p>Last Name: {{ user_info['last_name'] }}</p>
+    <p>Password: {{ user_info['password'] }}</p>
+    <p>Gender: {{ user_info['gender'] }}</p>
+    <p>Address: {{ user_info['address'] }}</p>
+    <p>Phone Number: {{ user_info['phonenumber'] }}</p>
+    <p>Credit Card: {{ user_info['credit_card'] }}</p>
+    <p>Date of Birth: {{ user_info['date_of_birth'] }}</p>
+    
+    {% if clothing_order_details %}
+        <h2>Clothing Orders</h2>
+
+        {% for date, orders in clothing_order_details.items() %}
+            <h3>{{ date }}</h3>
+            <ul>
+                {% for order in orders %}
+                    <li>
+                        {% if order %}
+                            Clothing Order:
+                            {{ order[0] }} - Size: {{ order[1] }}
+                        {% else %}
+                            Order details not available
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>No clothing orders found.</p>
+    {% endif %}
+
+    {% if cosmetic_order_details %}
+        <h2>Cosmetic Orders</h2>
+
+        {% for date, orders in cosmetic_order_details.items() %}
+            <h3>{{ date }}</h3>
+            <ul>
+                {% for order in orders %}
+                    <li>
+                        {% if order %}
+                            Cosmetic Order:
+                            {{ order[0] }}
+                        {% else %}
+                            Order details not available
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>No cosmetic orders found.</p>
+    {% endif %}
+</body>
+</html>
