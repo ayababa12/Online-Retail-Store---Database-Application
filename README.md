@@ -47,4 +47,4 @@ The 433 Store is an online shopping website developed using Flask and PostgreSQL
 1. To check your profile you first need to be logged in. To login check #Signup/Login.
 2. After you have logged in the profile icon is now shown on the top right of your screen left to the cart button.
 3. To view your profile you can now click on that icon and now all your information as well as past orders are shown.
-4. To navigate back to the main page simply click on our FOUR3THREE which is found on the top of the page.
+4. To navigate back to the main page, click on the FOUR3THREE icon which is found on the top of the page.
