@@ -12,8 +12,8 @@ The 433 Store is an online shopping website developed using Flask and PostgreSQL
 
 ## Usage
 
-1. First open the main.py file and make sure to replace the password on line 9 with your own password for the dbms database we have given to you.
-2. You need to have PostgreSQL, and the psycopg2 module on python. The database is found in the file 'four3three.sql'
+1. First open the main.py file and make sure to replace the password on line 9 with your own password for PostgreSQL
+2. You need to have PostgreSQL, and the psycopg2 module on python. The database is found in the file 'four3three.sql'. Create the database by running this SQL code on pgadmin.
 3. Run main.py
 4. Visit [http://localhost:5000](http://localhost:5000).
 
