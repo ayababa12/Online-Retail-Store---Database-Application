@@ -1,6 +1,6 @@
-# Project Name
+# FOUR3THREE Online Shop
 
-The 433 Store is an online shopping website developed using Flask and PostgreSQL. It offers a variety of clothing and cosmetic items. Users can browse different categories, view products, add items to their cart, and complete the checkout process.
+The FOUR3THREE Store is an online shopping website developed using Flask and PostgreSQL. It offers a variety of clothing and cosmetic items. Users can browse different categories, view products, add items to their cart, and complete the checkout process.
 
 ## Table of Contents
 - [A-Database-Design-for-FOUR3THREE](#A-Database-Design-for-FOUR3THREE)
